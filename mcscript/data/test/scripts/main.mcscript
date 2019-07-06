@@ -1,0 +1,42 @@
+
+#file: ./main
+// here goes your main content
+// executes 20 times a second
+  
+as(@a),at(@s){
+
+    run function player {
+
+        var no!click
+
+        /fill ~2 ~2 ~2 ~-2 ~-2 ~-2 air replace barrier
+        if(isWall @s){
+            if('block ~ ~-1 ~ air'){
+                /setblock ~ ~-1 ~ barrier
+            }
+            isWall @s = false
+        }
+
+        /execute if block ~1 ~ ~ pink_concrete run tag @s add isWall
+        /execute if block ~-1 ~ ~ pink_concrete run tag @s add isWall
+        /execute if block ~ ~ ~1 pink_concrete run tag @s add isWall
+        /execute if block ~ ~ ~-1 pink_concrete run tag @s add isWall
+        /execute if block ~1 ~1 ~ pink_concrete run tag @s add isWall
+        /execute if block ~-1 ~1 ~ pink_concrete run tag @s add isWall
+        /execute if block ~ ~1 ~1 pink_concrete run tag @s add isWall
+        /execute if block ~ ~1 ~-1 pink_concrete run tag @s add isWall
+
+        if ("block ~ ~-1 ~ orange_concrete") {
+            /effect give @s minecraft:speed 1 5 true
+        }
+        if ("block ~ ~-1 ~ lime_concrete") {
+            /effect give @s minecraft:jump_boost 1 3 true
+        }
+
+        if(click @s > 0){
+            /function test:click
+            click @s = 0
+        }
+    }
+
+}

@@ -1,0 +1,13 @@
+#file: ./files/main
+
+const mainText = "this is the main"
+const funcText = "this is the function"
+
+run function "files/function" {
+    /say $(funcText)
+}
+
+
+
+/say $(mainText)
+

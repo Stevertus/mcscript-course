@@ -1,0 +1,33 @@
+#file: ./click
+
+raycast {
+
+    var motionX @e[tag=target] = 0
+    var motionZ @e[tag=target] = 0
+
+    align ("x"), positioned("~0.5 ~ ~0.7") {
+        motionZ @e[tag=target,distance=..0.6] -= 1
+    }
+    align('x'),positioned("~0.5 ~ ~-0.7"){
+        motionZ @e[tag=target,distance=..0.6] += 1
+    }
+    align('z'),positioned("~0.7 ~ ~0.5"){
+        motionX @e[tag=target,distance=..0.6] -= 1
+    }
+    align('z'),positioned("~-0.7 ~ ~0.5"){
+        motionX @e[tag=target,distance=..0.6] += 1
+    }
+
+    as(@e[tag=target,distance=..5]){
+       /execute store result entity @s Motion[0] double 0.1 run scoreboard players get @s motionX
+       /execute store result entity @s Motion[1] double 0.1 run scoreboard players get @s motionZ
+    }
+
+},{
+   if(@s[distance=5..]){
+       /particle flame
+   } 
+   if('block ~ 54 ~ gray_stained_glass'){
+       /tag @s add mcscriptStop
+   }
+}
