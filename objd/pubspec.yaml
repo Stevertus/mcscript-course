@@ -1,0 +1,4 @@
+name: objd_example
+dependencies:
+  objd:
+    path: C:\dev\Dart\objectiveD 
